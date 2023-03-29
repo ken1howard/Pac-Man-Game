@@ -48,3 +48,15 @@ JavaScript
 - Provide Animations and roations for pac-man through functions, if statements, and defining different objects 
 
 - Functions to return the text GameOver on the Screen 
+
+
+
+HTML
+
+Title: Use an H1 tag to display the title of the game inside of a div tag.
+
+Display the Game Board: You the tag canvas with an Id of your choosing to be able to place your game on the canvas.
+
+Link JavaScript to HTML: Link the main javascript file to the html page in between a script tag with src and type module for eveything to work.
+
+Link Style Sheet: Link the style sheet to the html through a link tag
