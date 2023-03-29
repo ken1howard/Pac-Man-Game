@@ -60,3 +60,16 @@ Display the Game Board: You the tag canvas with an Id of your choosing to be abl
 Link JavaScript to HTML: Link the main javascript file to the html page in between a script tag with src and type module for eveything to work.
 
 Link Style Sheet: Link the style sheet to the html through a link tag
+
+
+CSS
+
+Style Canvas: Create a shadow box with measurements of your choosing
+
+Style h1: align the h1 tag to the center and put color and font of your choosing
+
+Style Body: Use flex to center the canvas on the page
+
+
+JavaScript
+
