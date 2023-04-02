@@ -85,6 +85,14 @@ Import the map of the game into the initial game JavaScript file
 
 Create an Array inside an array full of values and use the values to represent the image of your choice to create the board
 
+Use the draw method to link the values to your images
+
+BE CREATIVE: create your game board using the values in what ever pattern of your choosing
+
+Use draw to loop and display the images on the canvas along with setting the sizing
+
+Create a  Pacman Js file to work on pacman
+
 
 
 

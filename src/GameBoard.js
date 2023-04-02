@@ -1,3 +1,4 @@
+import Pacman from './Pacman.js'
 export default class GameBoard {
     constructor (gameSize){
         this.gameSize = gameSize;
@@ -10,23 +11,24 @@ export default class GameBoard {
         
 
     }
-
+// Use Array to Display the Gameboard
+// Link the numbers to the images 
     board = [
         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
         [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-        [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-        [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-        [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-        [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-        [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-        [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-        [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-        [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+        [1,0,1,0,1,1,1,0,1,1,1,0,1,0,1],
+        [1,0,1,0,0,0,0,0,0,0,0,0,1,0,1],
+        [1,0,1,1,1,1,1,0,1,1,1,1,1,0,1],
+        [1,0,0,0,0,0,0,2,0,0,0,0,0,0,1],
+        [1,0,1,1,0,1,1,0,1,1,0,1,1,0,1],
+        [1,0,1,0,0,0,0,0,0,0,0,0,1,0,1],
+        [1,0,1,0,0,0,0,0,0,0,0,0,1,0,1],
+        [1,0,1,1,1,1,1,0,1,1,1,1,1,0,1],
         [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
     ]
 
-
+// Draw method links the images to the values in the array through conditional statements
     draw(ctx) {
         for (let row = 0; row < this.board.length; row++){
             for(let column = 0; column < this.board[row].length; column++){
@@ -39,9 +41,10 @@ export default class GameBoard {
                 }
             }
         }
+        // 0 = Dots / 1 = Walls / 2 = Pac-man
     //console.log('draw')
    }
-
+// Display the acutal images on the canvas with the proper sizing with these functions
    #drawDot(ctx, column,row, size){
     ctx.drawImage(
       this.whiteDot,
@@ -59,6 +62,22 @@ ctx.drawImage(
     size,
     size)
 }
+getPacman(velocity) {
+    for(let row=0; row < this.board.length; row++){
+        for(let column =0; column < this.board[row].length; column++){
+            let tile = this.board[row][column];
+            if (tile === 2) {
+                this.board[row][column] = 0;
+                return new Pacman(column * this.gameSize,
+                     row * this.gameSize,
+                      velocity,
+                      this);
+            }
+        }
+    }
+}
+
+
    setCanvasSize(canvas){
     canvas.width = this.board[0].length * this.gameSize;
     canvas.height = this.board.length * this.gameSize;
