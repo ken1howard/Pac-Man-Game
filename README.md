@@ -83,6 +83,8 @@ Export the map of the game from the game map file
 
 Import the map of the game into the initial game JavaScript file
 
+Create an Array inside an array full of values and use the values to represent the image of your choice to create the board
+
 
 
 
