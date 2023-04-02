@@ -73,3 +73,16 @@ Style Body: Use flex to center the canvas on the page
 
 JavaScript
 
+Reference the context in JavaScript
+
+Create a SetInerval to be able to refresh the screen with however much time in between to your liking
+
+Create another JavaScript file for the game map to keep the codes organized and accessible
+
+Export the map of the game from the game map file 
+
+Import the map of the game into the initial game JavaScript file
+
+
+
+
