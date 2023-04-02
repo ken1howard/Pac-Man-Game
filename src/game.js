@@ -8,7 +8,7 @@ const gameBoard = new GameBoard(gameSize);
 
 
 function gameLoop() {
-console.log ("game loop");
+gameBoard.draw();
 
 }
 
