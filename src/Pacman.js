@@ -39,6 +39,6 @@ export default class Pacman {
         ];
 
         this.pacmanImageIndex = 0;
-    }
+    }  
 }
 

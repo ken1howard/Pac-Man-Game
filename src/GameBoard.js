@@ -70,6 +70,7 @@ getPacman(velocity) {
                 this.board[row][column] = 0;
                 return new Pacman(column * this.gameSize,
                      row * this.gameSize,
+                     this.gameSize,
                       velocity,
                       this);
             }
