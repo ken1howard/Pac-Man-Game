@@ -88,6 +88,12 @@ getPacman(velocity) {
    }
 
    wallCollision(x,y,direction) {
+
+    if(direction == null) {
+        return;
+    }
+
+
     if(
     Number.isInteger(x/this.gameSize) &&
     Number.isInteger(y/ this.gameSize)

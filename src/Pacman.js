@@ -15,6 +15,8 @@ export default class Pacman {
         this.pacmanAnimationDefault = 10;
         this.pacmanAnimationTimer = null;
 
+        this.pacmanRotation = this.rotation.right;
+
         document.addEventListener("keydown", this.#keydown)
 
         this.#loadPacmanImages();
@@ -23,13 +25,36 @@ export default class Pacman {
     draw(ctx){
         this.#move();
         this.#animate();
-        ctx.drawImage(
+
+        const  size = this.gameSize/2;
+
+        ctx.save();
+        ctx.translate(this.x + size, this.y + size)
+        ctx.rotate((this.pacmanRotation * 65 * Math.PI)/ 100);
+        ctx.drawImage( this.pacmanImages[this.pacmanImageIndex], 
+            -size,
+            -size, 
+            this.gameSize, 
+            this.gameSize
+            );
+
+            ctx.restore()
+    }
+
+        /*ctx.drawImage(
             this.pacmanImages[this.pacmanImageIndex],
             this.x, 
             this.y, 
             this.gameSize,
             this.gameSize 
-            );
+            );*/
+    
+
+    rotation = {
+        right: 0,
+        down: 1,
+        left: 2,
+        up: 3,
     }
 
     #loadPacmanImages() {
@@ -104,6 +129,8 @@ if (event.keyCode == 39){
         this.currentMovingDirection
         )
         ) {
+            this.pacmanAnimationTimer = null;
+            this.pacmanImageIndex = 1;
             return;
         } else if 
         (this.currentMovingDirection != null &&
@@ -115,15 +142,19 @@ if (event.keyCode == 39){
         switch (this.currentMovingDirection) {
             case MovingPacman.up:
             this.y -= this.velocity;
+            this.pacmanRotation = this.rotation.up;
             break;
             case MovingPacman.down:
             this.y += this.velocity;
+            this.pacmanRotation = this.rotation.down;
             break;
             case MovingPacman.left:
             this.x -= this.velocity;
+            this.pacmanRotation = this.rotation.left;
             break;
             case MovingPacman.right:
             this.x += this.velocity;
+            this.pacmanRotation = this.rotation.right;
             break;
         }
     }
