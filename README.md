@@ -93,6 +93,12 @@ Use draw to loop and display the images on the canvas along with setting the siz
 
 Create a  Pacman Js file to work on pacman
 
+Import Pacman Js file from the Gameboard Js and Export from the Pacman Js
 
+Give pacman a constructor and define x, y, velocity, the game size, and the gameboard
 
+Use a draw involving context to draw the pacman on the gameboard
 
+Load all the images need for pacman (mouth closed, partially open, and wide open) & define them to a variable.
+
+Use and array to be able to draw each image when needed
