@@ -82,9 +82,26 @@ if (event.keyCode == 39){
         if(Number.isInteger(this.x/this.gameSize) &&
         Number.isInteger(this.y/this.gameSize)
         ){
+            if(
+                !this.gameBoard.wallCollision(
+                this.x,
+                this.y,
+                this.requestedMovingDirection
+            )
+            )
+
             this.currentMovingDirection = this.requestedMovingDirection;
         }
     }
+
+    if(this.gameBoard.wallCollision(
+        this.x, 
+        this.y, 
+        this.currentMovingDirection
+        )
+        ) {
+            return;
+        }
         switch (this.currentMovingDirection) {
             case MovingPacman.up:
             this.y -= this.velocity;

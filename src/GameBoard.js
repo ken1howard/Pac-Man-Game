@@ -1,4 +1,7 @@
 import Pacman from './Pacman.js'
+
+import MovingPacman from './MovingPacman.js';
+
 export default class GameBoard {
     constructor (gameSize){
         this.gameSize = gameSize;
@@ -82,5 +85,45 @@ getPacman(velocity) {
    setCanvasSize(canvas){
     canvas.width = this.board[0].length * this.gameSize;
     canvas.height = this.board.length * this.gameSize;
+   }
+
+   wallCollision(x,y,direction) {
+    if(
+    Number.isInteger(x/this.gameSize) &&
+    Number.isInteger(y/ this.gameSize)
+    ) {
+        let column = 0;
+        let row = 0;
+        let nextColumn = 0;
+        let nextRow = 0;
+
+        switch(direction) {
+            case MovingPacman.right:
+                nextColumn = x + this.gameSize;
+                column = nextColumn / this.gameSize;
+                row = y / this.gameSize
+                break;
+                case MovingPacman.left:
+                nextColumn = x - this.gameSize;
+                column = nextColumn / this.gameSize;
+                row = y / this.gameSize
+                break;
+                case MovingPacman.down:
+                nextRow = y + this.gameSize;
+                row = nextRow / this.gameSize;
+                column = x / this.gameSize
+                break;
+                case MovingPacman.up:
+                nextRow = y - this.gameSize;
+                row = nextRow / this.gameSize;
+                column = x / this.gameSize
+                break;
+        }
+   const tile = this.board[row][column];
+   if( tile === 1) {
+    return true;
+   }
+}
+return false
    }
 }
