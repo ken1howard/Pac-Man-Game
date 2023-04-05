@@ -92,6 +92,12 @@ if (event.keyCode == 39){
             case MovingPacman.down:
             this.y += this.velocity;
             break;
+            case MovingPacman.left:
+            this.x -= this.velocity;
+            break;
+            case MovingPacman.right:
+            this.x += this.velocity;
+            break;
         }
     }
 }
