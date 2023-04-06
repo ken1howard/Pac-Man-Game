@@ -56,7 +56,7 @@ export default class Pacman {
         left: 2,
         up: 3,
     }
-
+//Define the different stages of pacman through a const 
     #loadPacmanImages() {
         const pacmanImage1 = new Image();
         pacmanImage1.src = '../images/Closed.png';
@@ -70,6 +70,7 @@ export default class Pacman {
         const pacmanImage4 = new Image();
         pacmanImage4.src = '../images/PartialOpen.png';
 
+        // Use and array to be able to draw images and an Index to have a starting image
         this.pacmanImages = [
             pacmanImage1,
             pacmanImage2,
@@ -80,6 +81,8 @@ export default class Pacman {
         this.pacmanImageIndex = 0;
     }  
 
+
+    // Put functions into the keys of your choosing to move pacman
     #keydown =(event) => {
 //up
 if (event.keyCode == 38){
@@ -107,6 +110,9 @@ if (event.keyCode == 39){
 }
     };
     #move() {
+
+        // condition statement to move pacman within the grids on the game board
+        
         if(this.currentMovingDirection !== this.requestedMovingDirection) {
         if(Number.isInteger(this.x/this.gameSize) &&
         Number.isInteger(this.y/this.gameSize)

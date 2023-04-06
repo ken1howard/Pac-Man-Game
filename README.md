@@ -102,3 +102,12 @@ Use a draw involving context to draw the pacman on the gameboard
 Load all the images need for pacman (mouth closed, partially open, and wide open) & define them to a variable.
 
 Use and array to be able to draw each image when needed
+
+Decide which keys on the keyboard you want to use for the movement of pacman and involve the current and requested direction
+
+Create an If statement to keep the pacman within the grid with it's movement
+
+Add a function for animation on pacman
+
+Make sure you import and export the correct files to the Game board
+
