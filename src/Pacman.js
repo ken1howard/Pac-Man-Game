@@ -16,6 +16,7 @@ export default class Pacman {
         this.pacmanAnimationTimer = null;
 
         this.pacmanRotation = this.rotation.right;
+        this.munchSound = new Audio ("../sounds/Munch.wav");
 
         document.addEventListener("keydown", this.#keydown)
 
@@ -181,7 +182,8 @@ if (event.keyCode == 39){
 
     #eatFood() {
         if(this.gameBoard.eatFood(this.x, this.y)) {
-            
+            this.munchSound.play();
+
         }
     }
 }
