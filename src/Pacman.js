@@ -25,6 +25,7 @@ export default class Pacman {
     draw(ctx){
         this.#move();
         this.#animate();
+        this.#eatFood();
 
         const  size = this.gameSize/2;
 
@@ -112,7 +113,7 @@ if (event.keyCode == 39){
     #move() {
 
         // condition statement to move pacman within the grids on the game board
-        
+
         if(this.currentMovingDirection !== this.requestedMovingDirection) {
         if(Number.isInteger(this.x/this.gameSize) &&
         Number.isInteger(this.y/this.gameSize)
@@ -175,6 +176,12 @@ if (event.keyCode == 39){
             this.pacmanImageIndex++;
             if(this.pacmanImageIndex == this.pacmanImages.length)
             this.pacmanImageIndex = 0;
+        }
+    }
+
+    #eatFood() {
+        if(this.gameBoard.eatFood(this.x, this.y)) {
+            
         }
     }
 }

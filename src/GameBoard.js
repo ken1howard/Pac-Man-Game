@@ -42,9 +42,12 @@ export default class GameBoard {
                 else if (tile === 0) {
                 this.#drawDot(ctx, column,row, this.gameSize);
                 }
+                else {
+                    this.#drawBlank (ctx, column,row, this.gameSize);
+                }
             }
         }
-        // 0 = Dots / 1 = Walls / 2 = Pac-man
+        // 0 = Dots / 1 = Walls / 2 = Pac-man / 3 = Empty Space
     //console.log('draw')
    }
 // Display the acutal images on the canvas with the proper sizing with these functions
@@ -64,6 +67,11 @@ ctx.drawImage(
     row * this.gameSize,
     size,
     size)
+}
+
+#drawBlank(ctx, column, row, size) {
+     ctx.fillStyle = "black";
+     ctx.fillRect( column * this.gameSize, row * this.gameSize, size, size);
 }
 getPacman(velocity) {
     for(let row=0; row < this.board.length; row++){
@@ -131,5 +139,17 @@ getPacman(velocity) {
    }
 }
 return false
+   }
+
+   eatFood(x, y){
+    const row = y / this.gameSize;
+    const column = x / this.gameSize;
+    if(Number.isInteger(row) && Number.isInteger(column)) {
+        if(this.board[row][column] === 0) {
+            this.board[row][column] = 3;
+            return true;
+        }
+    }
+    return false;
    }
 }
