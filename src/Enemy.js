@@ -15,7 +15,7 @@ constructor (x,y,gameSize, velocity, gameBoard) {
         Math.random() * Object.keys(MovingPacman).length
     );
 
-    this.directionTimerDefault = this.#random(10,50)
+    this.directionTimerDefault = this.#random(1,3)
     this.directionTimer = this.directionTimerDefault;
 }
 

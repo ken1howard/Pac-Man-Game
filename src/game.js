@@ -17,7 +17,7 @@ pacman.draw(ctx);
 enemies.forEach((enemy) => enemy.draw(ctx));
 
 }
-
+//function pause ()
 
 gameBoard.setCanvasSize(canvas);
 setInterval(gameLoop, 1000/75);
