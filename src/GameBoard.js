@@ -1,5 +1,5 @@
-import Pacman from './Pacman.js'
-
+import Pacman from './Pacman.js';
+import Enemy from './Enemy.js';
 import MovingPacman from './MovingPacman.js';
 
 export default class GameBoard {
@@ -18,7 +18,7 @@ export default class GameBoard {
 // Link the numbers to the images 
     board = [
         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+        [1,4,0,0,0,0,0,0,0,0,0,0,0,4,1],
         [1,0,1,0,1,1,1,0,1,1,1,0,1,0,1],
         [1,0,1,0,0,0,0,0,0,0,0,0,1,0,1],
         [1,0,1,1,1,1,1,0,1,1,1,1,1,0,1],
@@ -27,7 +27,7 @@ export default class GameBoard {
         [1,0,1,0,0,0,0,0,0,0,0,0,1,0,1],
         [1,0,1,0,0,0,0,0,0,0,0,0,1,0,1],
         [1,0,1,1,1,1,1,0,1,1,1,1,1,0,1],
-        [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+        [1,4,0,0,0,0,0,0,0,0,0,0,0,4,1],
         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
     ]
 
@@ -47,7 +47,7 @@ export default class GameBoard {
                 }
             }
         }
-        // 0 = Dots / 1 = Walls / 2 = Pac-man / 3 = Empty Space
+        // 0 = Dots / 1 = Walls / 2 = Pac-man / 3 = Empty Space / 4 = Enemies
     //console.log('draw')
    }
 // Display the acutal images on the canvas with the proper sizing with these functions
@@ -89,6 +89,27 @@ getPacman(velocity) {
     }
 }
 
+getEnemies(velocity) {
+const enemies = [];
+
+for(let row = 0; row < this.board.length; row++) {
+    for(let column = 0; column < this.board[row].length; column++){
+        const tile = this.board[row][column];
+        if (tile == 4) {
+            this.board[row][column] = 0;
+            enemies.push(
+                new Enemy (column * this.gameSize,
+                 row * this.gameSize, 
+                 this.gameSize, 
+                 velocity, 
+                 this
+                 )
+                 );
+        }
+    }
+}
+return enemies;
+}
 
    setCanvasSize(canvas){
     canvas.width = this.board[0].length * this.gameSize;

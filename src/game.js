@@ -8,11 +8,13 @@ const ctx = canvas.getContext('2d');
 //reference context
 const gameBoard = new GameBoard(gameSize);
 const pacman = gameBoard.getPacman(velocity);
+const enemies = gameBoard.getEnemies(velocity);
 
 
 function gameLoop() {
 gameBoard.draw(ctx);
 pacman.draw(ctx);
+enemies.forEach((enemy) => enemy.draw(ctx));
 
 }
 
