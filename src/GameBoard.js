@@ -6,11 +6,18 @@ export default class GameBoard {
     constructor (gameSize){
         this.gameSize = gameSize;
 
-        this.whiteDot = new Image()
-        this.whiteDot.src = '../Images/WhiteDot.png';
+        this.cupCake = new Image()
+        this.cupCake.src = '../Images/Cupcake.png';
+
+        this.cake = new Image ();
+        this.cake.src = ' ../Images/Cake.png';
 
         this.wall =new Image ()
         this.wall.src = '../Images/GameboardWall.png';
+
+        this.bigCake = this.cake;
+        this.cakeAnimationTimerDefault = 60;
+        this.cakeAnimationTimer = this.cakeAnimationTimerDefault;
         
 
     }
@@ -20,12 +27,12 @@ export default class GameBoard {
         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
         [1,4,0,0,0,0,0,0,0,0,0,0,0,4,1],
         [1,0,1,0,1,1,1,0,1,1,1,0,1,0,1],
-        [1,0,1,0,0,0,0,0,0,0,0,0,1,0,1],
+        [1,0,1,5,0,0,0,0,0,0,0,5,1,0,1],
         [1,0,1,1,1,1,1,0,1,1,1,1,1,0,1],
         [1,0,0,0,0,0,0,2,0,0,0,0,0,0,1],
         [1,0,1,1,0,1,1,0,1,1,0,1,1,0,1],
         [1,0,1,0,0,0,0,0,0,0,0,0,1,0,1],
-        [1,0,1,0,0,0,0,0,0,0,0,0,1,0,1],
+        [1,0,1,5,0,0,0,0,0,0,0,5,1,0,1],
         [1,0,1,1,1,1,1,0,1,1,1,1,1,0,1],
         [1,4,0,0,0,0,0,0,0,0,0,0,0,4,1],
         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -40,24 +47,38 @@ export default class GameBoard {
                     this.#drawWall(ctx, column,row, this.gameSize);
                 }
                 else if (tile === 0) {
-                this.#drawDot(ctx, column,row, this.gameSize);
-                }
-                else {
+                this.#drawCupcake(ctx, column,row, this.gameSize);
+                } else if (tile == 5) {
+                   this.#drawCake(ctx, column,row, this.gameSize);
+                } else {
                     this.#drawBlank (ctx, column,row, this.gameSize);
                 }
             }
         }
-        // 0 = Dots / 1 = Walls / 2 = Pac-man / 3 = Empty Space / 4 = Enemies
+        // 0 = Dots / 1 = Walls / 2 = Pac-man / 3 = Empty Space / 4 = Enemies / 5 = Power 
     //console.log('draw')
    }
 // Display the acutal images on the canvas with the proper sizing with these functions
-   #drawDot(ctx, column,row, size){
+   #drawCupcake(ctx, column,row, size){
     ctx.drawImage(
-      this.whiteDot,
+      this.cupCake,
         column * this.gameSize,
         row * this.gameSize,
         size,
         size)
+    }
+
+    #drawCake (ctx, column, row, size) {
+        this.cakeAnimationTimer --;
+        if(this.cakeAnimationTimer ===0) {
+            this.cakeAnimationTimer = this.cakeAnimationTimerDefault;
+            if(this.bigCake == this.cake) {
+                this.bigCake = this.cupCake;
+            } else {
+                this.bigCake = this.cake;
+            }
+        }
+        ctx.drawImage(this.bigCake, column * size, row * size, size, size);
     }
 
 #drawWall(ctx, column,row, size){

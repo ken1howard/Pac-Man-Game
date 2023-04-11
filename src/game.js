@@ -14,10 +14,12 @@ const enemies = gameBoard.getEnemies(velocity);
 function gameLoop() {
 gameBoard.draw(ctx);
 pacman.draw(ctx);
-enemies.forEach((enemy) => enemy.draw(ctx));
+enemies.forEach((enemy) => enemy.draw(ctx, pause()));
 
 }
-//function pause ()
+function pause () {
+    return !pacman.madeFirstMove;
+}
 
 gameBoard.setCanvasSize(canvas);
 setInterval(gameLoop, 1000/75);

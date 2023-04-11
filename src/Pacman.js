@@ -18,6 +18,8 @@ export default class Pacman {
         this.pacmanRotation = this.rotation.right;
         this.munchSound = new Audio ("../sounds/Munch.wav");
 
+        this.madeFirstMove = false;
+
         document.addEventListener("keydown", this.#keydown)
 
         this.#loadPacmanImages();
@@ -91,24 +93,28 @@ if (event.keyCode == 38){
     if(this.currentMovingDirection == MovingPacman.down)
     this.currentMovingDirection = MovingPacman.up;
     this.requestedMovingDirection = MovingPacman.up;
+    this.madeFirstMove = true;
 }
 //down
 if (event.keyCode == 40){
     if(this.currentMovingDirection == MovingPacman.up)
     this.currentMovingDirection = MovingPacman.down;
     this.requestedMovingDirection = MovingPacman.down;
+    this.madeFirstMove = true;
 }
 //left
 if (event.keyCode == 37){
     if(this.currentMovingDirection == MovingPacman.right)
     this.currentMovingDirection = MovingPacman.left;
     this.requestedMovingDirection = MovingPacman.left;
+    this.madeFirstMove = true;
 }
 //right
 if (event.keyCode == 39){
     if(this.currentMovingDirection == MovingPacman.left)
     this.currentMovingDirection = MovingPacman.right;
     this.requestedMovingDirection = MovingPacman.right;
+    this.madeFirstMove = true;
 }
     };
     #move() {

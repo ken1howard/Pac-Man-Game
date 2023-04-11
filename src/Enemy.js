@@ -20,9 +20,12 @@ constructor (x,y,gameSize, velocity, gameBoard) {
 }
 
 
-    draw(ctx) {
-        this.#move();
+    draw(ctx, pause) {
+        if(!pause) {
+            this.#move();
         this.#changeDirection();
+        }
+        
         ctx.drawImage(this.image, 
             this.x, 
             this.y, 
