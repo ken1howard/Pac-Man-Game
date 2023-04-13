@@ -29,6 +29,7 @@ export default class Pacman {
         this.#move();
         this.#animate();
         this.#eatFood();
+        this.#eatCake();
 
         const  size = this.gameSize/2;
 
@@ -190,6 +191,12 @@ if (event.keyCode == 39){
         if(this.gameBoard.eatFood(this.x, this.y)) {
             this.munchSound.play();
 
+        }
+    }
+
+    #eatCake () {
+        if(this.gameBoard.eatCake(this.x, this.y)){
+            
         }
     }
 }

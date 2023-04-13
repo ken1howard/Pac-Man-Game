@@ -55,7 +55,7 @@ export default class GameBoard {
                 }
             }
         }
-        // 0 = Dots / 1 = Walls / 2 = Pac-man / 3 = Empty Space / 4 = Enemies / 5 = Power 
+        // 0 = Cupcakes / 1 = Walls / 2 = Pac-man / 3 = Empty Space / 4 = Enemies / 5 = Cake
     //console.log('draw')
    }
 // Display the acutal images on the canvas with the proper sizing with these functions
@@ -193,5 +193,18 @@ return false
         }
     }
     return false;
+   }
+
+   eatCake (x,y) {
+    const row = y / this.gameSize;
+    const column = x / this.gameSize;
+    if (Number.isInteger(row) && Number.isInteger(column)) {
+        const tile = this.board[row][column];
+        if(tile === 5) {
+            this.board[row][column] = 3;
+            return true;
+        }
+    }
+ return false;
    }
 }
