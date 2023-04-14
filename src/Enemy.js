@@ -17,21 +17,63 @@ constructor (x,y,gameSize, velocity, gameBoard) {
 
     this.directionTimerDefault = this.#random(1,3)
     this.directionTimer = this.directionTimerDefault;
+
+    this.scaredAboutToExpireTimerDefault = 10;
+    this.scaredAboutToExpireTimer = this.scaredAboutToExpireTimerDefault;
 }
 
 
-    draw(ctx, pause) {
+    draw(ctx, pause, pacman) {
         if(!pause) {
             this.#move();
         this.#changeDirection();
         }
-        
+
+        this.#setImage(ctx, pacman);
+    }
+
+    collideWith(pacman) {
+       const size = this.gameSize / 2;
+       if(
+        this.x < pacman.x + size &&
+        this.x + size > pacman.x &&
+        this.y < pacman.y + size &&
+        this.y + size > pacman.y
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+#setImage(ctx, pacman) {
+    if(pacman.cakeSoundActive){
+        this.#setImageWhenCakeIsActive(pacman);
+    } else {
+        this.image = this.normalMonster;
+    }
         ctx.drawImage(this.image, 
             this.x, 
             this.y, 
             this.gameSize, 
             this.gameSize);
     }
+
+#setImageWhenCakeIsActive(pacman) {
+    if(pacman.cakeAboutToExpire) {
+        this.scaredAboutToExpireTimer --;
+        if(this.scaredAboutToExpireTimer === 0){
+            this.scaredAboutToExpireTimer = this.scaredAboutToExpireTimerDefault;
+            if(this.image === this.scaredMonster) {
+                this.image = this.scaredMonster2;
+            } else {
+                this.image = this.scaredMonster;
+            }
+        }
+    } else {
+        this.image = this.scaredMonster;
+    }
+}
 
 #changeDirection() {
     this.directionTimer --;

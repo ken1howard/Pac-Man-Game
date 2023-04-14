@@ -205,7 +205,7 @@ if (event.keyCode == 39){
             this.cakeSound.play();
             this.cakeSoundActive = true;
             this.cakeAboutToExpire = false;
-            this.timers.array.forEach((timer) => clearTimeout(timer));
+            this.timers.forEach((timer) => clearTimeout(timer));
             this.timers = [];
 
             let cakeTimer = setTimeout(() => {
