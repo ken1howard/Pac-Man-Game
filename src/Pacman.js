@@ -24,6 +24,8 @@ export default class Pacman {
         this.cakeAboutToExpire = false;
         this.timers = [];
 
+        this.eatMonsterSound = new Audio ("../sounds/EatMonster.wav")
+
         this.madeFirstMove = false;
 
         document.addEventListener("keydown", this.#keydown)
@@ -31,11 +33,15 @@ export default class Pacman {
         this.#loadPacmanImages();
     }
 
-    draw(ctx){
-        this.#move();
+    draw(ctx, pause, enemies){
+        if(!pause) {
+            this.#move();
         this.#animate();
+        }
+        
         this.#eatFood();
         this.#eatCake();
+        this.#eatMonster(enemies);
 
         const  size = this.gameSize/2;
 
@@ -222,5 +228,14 @@ if (event.keyCode == 39){
             this.timers.push(cakeTimerAboutToExpireTimer);
         }
     }
-}
 
+    #eatMonster(enemies){
+        if(this.cakeSoundActive) {
+            const collideMonsters = enemies.filter((enemy) => enemy.collideWith(this));
+            collideMonsters.forEach((enemy) => {
+                enemies.splice(enemies.indexOf(enemy), 1);
+                this.eatMonsterSound.play();
+        });
+    }
+}
+}

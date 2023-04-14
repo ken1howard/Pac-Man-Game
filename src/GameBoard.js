@@ -137,6 +137,15 @@ return enemies;
     canvas.height = this.board.length * this.gameSize;
    }
 
+   didWin() {
+    return this.#cupcakesLeft() === 0;
+   }
+
+
+   #cupcakesLeft() {
+    return this.board.flat().filter(tile => tile === 0).length;
+   }
+
    wallCollision(x,y,direction) {
 
     if(direction == null) {
