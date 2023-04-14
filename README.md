@@ -91,7 +91,7 @@ BE CREATIVE: create your game board using the values in what ever pattern of you
 
 Use draw to loop and display the images on the canvas along with setting the sizing
 
-Create a  Pacman Js file to work on pacman
+Create a  Pacman Js file to work on pacman, Moving pacman file, and enemy file
 
 Import Pacman Js file from the Gameboard Js and Export from the Pacman Js
 
@@ -105,9 +105,27 @@ Use and array to be able to draw each image when needed
 
 Decide which keys on the keyboard you want to use for the movement of pacman and involve the current and requested direction
 
-Create an If statement to keep the pacman within the grid with it's movement
+Create If else statements to catch different scenarios when they happen throughout the game. 
 
 Add a function for animation on pacman
 
 Make sure you import and export the correct files to the Game board
 
+Create different functions for wall collision, pacman eating the food, pacman eating the food to be able to eat the monsters
+
+Everything that You want pacman to do, make sure you define it in the constructor of the pacman file.
+
+Pacman has a lot of different responsibilities, it's your choice what you want it to do
+
+Download any pictures you need for the monsters, pacman in all stages, and the different sounds when eating the food/monsters
+
+Create different timmers to be able to control the movement of the monsters and when you want certain actions to occur (define them in the constructor, then create a function)
+
+
+When working with canvas, make sure that each function is called in the draw method for it to show up in the game
+
+Pacman needs to move, animate, rotate, eat food, and enemies
+
+set forLoops for pacman and the enemies movement
+
+Functions are needed when the game needs to Pause (at the beginning and end of the game )
