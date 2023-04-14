@@ -9,6 +9,7 @@ export default class Pacman {
         this.velocity = velocity;
         this.gameBoard = gameBoard;
 
+    
         this.currentMovingDirection = null;
         this.requestedMovingDirection = null;
 
@@ -16,7 +17,12 @@ export default class Pacman {
         this.pacmanAnimationTimer = null;
 
         this.pacmanRotation = this.rotation.right;
-        this.munchSound = new Audio ("../sounds/Munch.wav");
+        this.biteSound = new Audio ("../sounds/Bite.wav");
+
+        this.cakeSound = new Audio ("../sounds/Munch.wav");
+        this.cakeSoundActive = false;
+        this.cakeAboutToExpire = false;
+        this.timers = [];
 
         this.madeFirstMove = false;
 
@@ -188,15 +194,32 @@ if (event.keyCode == 39){
     }
 
     #eatFood() {
-        if(this.gameBoard.eatFood(this.x, this.y)) {
-            this.munchSound.play();
+        if(this.gameBoard.eatFood(this.x, this.y) && this.madeFirstMove) {
+            this.biteSound.play();
 
         }
     }
 
     #eatCake () {
         if(this.gameBoard.eatCake(this.x, this.y)){
-            
+            this.cakeSound.play();
+            this.cakeSoundActive = true;
+            this.cakeAboutToExpire = false;
+            this.timers.array.forEach((timer) => clearTimeout(timer));
+            this.timers = [];
+
+            let cakeTimer = setTimeout(() => {
+                this.cakeSoundActive = false;
+                this.cakeAboutToExpire = false;
+            }, 1000 * 6)
+
+            this.timer.push(cakeTimer)
+
+            let cakeTimerAboutToExpireTimer = setTimeout (() => {
+                this.cakeAboutToExpire = true;
+            }, 1000 * 3);
+
+            this.timers.push(cakeTimerAboutToExpireTimer);
         }
     }
 }
