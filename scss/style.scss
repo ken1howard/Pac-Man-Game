@@ -1,0 +1,33 @@
+@import "variables";
+@import "utility";
+
+body {
+    @include flex-center;
+    height: 100vh;
+    background: $theme-primary;
+    align-items: center;
+
+    &#PacManBoard {
+        @include rounded-box($Box-color, 20px);
+        align-items: center;
+    }
+
+    &#loadPacmanImages {
+        @include rounded-box($theme-secondary, 10px);
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+    h1 {
+        text-align: center;
+        font-family: $fonts;
+        color: $theme-secondary;
+        background-color: calculate-contrast-color($theme-secondary);
+        
+        @if $theme-primary == $theme-secondary {
+            @error "Primary and secondary theme colors must be different!";
+        }
+    }
+}

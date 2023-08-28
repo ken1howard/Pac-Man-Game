@@ -1,0 +1,30 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #483d8b;
+  align-items: center;
+}
+body#PacManBoard {
+  background-color: #000000;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px #000000;
+  align-items: center;
+}
+body#loadPacmanImages {
+  background-color: #F5F5DC;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px #000000;
+}
+body#loadPacmanImages:hover {
+  transform: scale(1.05);
+}
+body h1 {
+  text-align: center;
+  font-family: "fantasy";
+  color: #F5F5DC;
+  background-color: calculate-contrast-color(#F5F5DC);
+}/*# sourceMappingURL=style.css.map */

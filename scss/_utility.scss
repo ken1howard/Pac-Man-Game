@@ -1,0 +1,18 @@
+@import "variables";
+
+@function darken-color($color) {
+    @return darken($color);
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin rounded-box($theme-primary, $padding) {
+    background-color: $theme-primary;
+    padding: $padding;
+    border-radius: $Monster-Radius;
+    box-shadow: 0px 0px 10px $Box-color;
+}
