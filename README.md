@@ -1,3 +1,6 @@
+ TITLE: Pac-Man Game
+ 
+ 
  Example of Screen Display: https://www.todayifoundout.com/wp-content/uploads/2013/08/pacman.jpg
 
 
@@ -49,7 +52,7 @@ JavaScript
 
 - Functions to return the text GameOver on the Screen 
 
-
+Description
 
 HTML
 
@@ -129,3 +132,45 @@ Pacman needs to move, animate, rotate, eat food, and enemies
 set forLoops for pacman and the enemies movement
 
 Functions are needed when the game needs to Pause (at the beginning and end of the game )
+
+Issues:
+
+- Pacman doesn't propers flip directions 
+
+
+Changelog
+
+- Created Files
+- Rename-Readme
+- Updated-README
+- created-html-css
+- Updated-README-with-CSS-HTML
+- Import Gameboard and updated README
+- Created an Array to represent the board
+- Displayed the Gameboard
+- Updated Readme and Created Pacman Js file
+- displayed pacman on screen
+- Updated the README and gave up and down direction to pacman
+- gave pacman the ability to the left and right
+- Prevented pacman from colliding with walls
+- added animation to pacman
+- Added rotation to pacman
+- Updated README
+- Made pacman eat the dots
+- Added Sound to pacman
+- Created Monsters
+- Made the Enemies More around the board
+- Changed the seconds it changes directions
+- Added flashing cake
+- Eat the cake now
+- Added sound to cake and timers after eating the cake
+- Added enemy collision and gameOver sounds
+- Added collision with monsters and gave over and game win sounds
+- Updated README
+
+
+API Documention (Tutorial)
+- Use the UP DOWN LEFT RIGHT arrows to move pacman around the map using functions
+- Monsters randomly move around map using functions
+- Pacman stay away from monsters and eat all the cupcakes and cakes
+- Refresh the page to start the game over
